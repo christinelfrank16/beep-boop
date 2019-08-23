@@ -32,7 +32,7 @@ This application takes user numeric input and returns a range of numbers startin
 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
-| The program disallows non-numeric input | "input string" | "Input not accepted. Please enter a number" |
+| The program disallows non-numeric input | "input string" | "Please enter a number" |
 | The program displays a range of numbers from 0 to the users inputted number | 5 | 0, 1, 2, 3, 4, 5 |
 | The program displays the message "Beep!" to replace all numbers in the range containing a 1 | 1 | 0, "Beep!"|
 | The program displays the message "Boop!" to replace all numbers in the range containing a 2 | 2 | 0, "Beep!", "Boop!" |
