@@ -16,7 +16,7 @@ function createMsgExceptions(num){
       range.push(count);
     }
 
-    var exceptionMsgs = ["\"Beep!\"", "\"Boop!\""];
+    var exceptionMsgs = ["\"Beep!\"", "\"Boop!\"", "\"I'm sorry Dave. I'm afraid I can't do that.\""];
     var outputValues = range.map(function(rangeNum){
       for(var msgIndex = exceptionMsgs.length; msgIndex > 0; msgIndex-=1){
         var rangeString = rangeNum.toString();
