@@ -34,10 +34,11 @@ This application takes user numeric input and returns a range of numbers startin
 | ------------- |:-------------:| -----:|
 | The program disallows non-numeric input | "input string" | "Please enter a number" |
 | The program displays a range of numbers from 0 to the users inputted number | 5 | 0, 1, 2, 3, 4, 5 |
-| The program displays the message "Beep!" to replace all numbers in the range containing a 1 | 1 | 0, "Beep!"|
-| The program displays the message "Boop!" to replace all numbers in the range containing a 2 | 2 | 0, "Beep!", "Boop!" |
-| The program displays the message "I'm sorry Dave. I'm afraid I can't do that." to replace all numbers in the range containing a 3 | 3 | 0, "Beep!", "Boop!", "I'm sorry Dave. I'm afraid I can't do that." |
-| The program sets message precedence (lowest to highest) based on the following number order 1, 2, 3 | 12 | 0, "Beep!", "Boop!", "I'm sorry Dave. I'm afraid I can't do that.", 4, 5, 6, 7, 8, 9, "Beep!", "Beep", "Boop!" |
+| The program displays the range of numbers as a list | 5 | 0<br> 1<br>2<br>3<br>4<br>5 |
+| The program displays the message "Beep!" to replace all numbers in the range containing a 1 | 1 | 0<br>"Beep!"|
+| The program displays the message "Boop!" to replace all numbers in the range containing a 2 | 2 | 0<br>"Beep!"<br>"Boop!" |
+| The program displays the message "I'm sorry Dave. I'm afraid I can't do that." to replace all numbers in the range containing a 3 | 3 | 0<br>"Beep!"<br>"Boop!"<br>"I'm sorry Dave. I'm afraid I can't do that." |
+| The program sets message precedence (lowest to highest) based on the following number order 1, 2, 3 | 12 | 0<br>"Beep!"<br>"Boop!"<br>"I'm sorry Dave. I'm afraid I can't do that."<br>4<br>5<br>6<br>7<br>8<br>9<br>"Beep!"<br>"Beep"<br>"Boop!" |
 
 
 
