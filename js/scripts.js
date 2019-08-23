@@ -16,6 +16,7 @@ $(document).ready(function(){
   });
 
   $("#analysis-btn").click(function(){
+    $("tbody").text('');
     var listItems = [];
     $("#output ul li").each(function(){
       listItems.push($(this));
@@ -28,7 +29,6 @@ $(document).ready(function(){
 
 function buildAnalysisTable(dataHolder){
   var dataProps = Object.keys(dataHolder);
-  console.log(dataProps);
   dataProps.forEach((propName, index) => buildRow(dataHolder, propName, index));
 }
 
@@ -73,7 +73,6 @@ function performAnalysis(listItems){
   var data = addDataTypes(listItems, data);
   data = countData(listItems, data);
   data = calcFrequency(data);
-  console.log(data);
   return data;
 }
 
