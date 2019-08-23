@@ -2,7 +2,7 @@
 
 #### Converts numeric input and displays exception values, {23-Aug-2019}
 
-#### By **{Christine Frank}**
+#### By **Christine Frank**
 
 ## Description
 
@@ -28,6 +28,19 @@ This application takes user numeric input and returns a range of numbers startin
 * Email: christine.braun13@gmail.com
 * LinkedIn: https://www.linkedin.com/in/christine-frank/
 
+## Application Specifications
+
+| Behavior | Input | Output |
+| ------------- |:-------------:| -----:|
+| The program disallows non-numeric input | "input string" | "Please enter a number" |
+| The program displays a range of numbers from 0 to the users inputted number | 5 | 0, 1, 2, 3, 4, 5 |
+| The program displays the message "Beep!" to replace all numbers in the range containing a 1 | 1 | 0, "Beep!"|
+| The program displays the message "Boop!" to replace all numbers in the range containing a 2 | 2 | 0, "Beep!", "Boop!" |
+| The program displays the message "I'm sorry Dave. I'm afraid I can't do that." to replace all numbers in the range containing a 3 | 3 | 0, "Beep!", "Boop!", "I'm sorry Dave. I'm afraid I can't do that." |
+| The program sets message precedence (lowest to highest) based on the following number order 1, 2, 3 | 12 | 0, "Beep!", "Boop!", "I'm sorry Dave. I'm afraid I can't do that.", 4, 5, 6, 7, 8, 9, "Beep!", "Beep", "Boop!" |
+
+
+
 ## Technologies Used
 
 * JavaScript
@@ -37,4 +50,4 @@ This application takes user numeric input and returns a range of numbers startin
 
 *This application is licensed under the MIT license.*
 
-Copyright (c) 2019 **_{Christine Frank}_**
+Copyright (c) 2019 **_Christine Frank_**
