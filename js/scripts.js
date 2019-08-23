@@ -9,8 +9,13 @@ $(document).ready(function(){
 
 function createMsgExceptions(num){
   if(!num){
-    alert("Input not accepted. Please enter a number.");
+    alert("Please enter a number.");
+  } else {
+    var range = [];
+    for (var count=0; count <= num; count++){
+      range.push(count);
+    }
   }
 
-  return num;
+  return range;
 }
