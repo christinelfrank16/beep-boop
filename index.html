@@ -19,12 +19,31 @@
           <label for="num">Please enter a number:</label>
           <input id="num" class="form-control" type="number" required>
         </div>
-        <button type="submit" class="btn btn-primary" name="button">Show Exceptions!</button>
+        <button type="submit" class="btn btn-primary">Show Exceptions!</button>
       </form>
-      <div id="output">
-        <ul>
+      <div id="output-panel">
+        <div id="output">
+          <ul>
 
-        </ul>
+          </ul>
+        </div>
+        <button id="analysis-btn" class="btn btn-primary" type="button">What's being shown?</button>
+      </div>
+      <div class="analysis">
+
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Value</th>
+              <th scope="col">Count</th>
+              <th scope="col">Frequency</th>
+            </tr>
+            <tbody>
+
+            </tbody>
+          </thead>
+        </table>
       </div>
     </div>
   </body>

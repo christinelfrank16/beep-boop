@@ -68,3 +68,11 @@ li:hover>img.car {
 .car, .pup {
   width: 50px;
 }
+
+#analysis-btn {
+  margin-top: 10px;
+}
+
+.table {
+  display: none;
+}

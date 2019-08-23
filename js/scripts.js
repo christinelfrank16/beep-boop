@@ -1,15 +1,16 @@
 ///////////  User Interface  ///////////
 
 $(document).ready(function(){
+  $("#output-panel").hide();
   $("form#user-input").submit(function(event){
     event.preventDefault();
-    $("#output").hide();
+    $("#output-panel").hide();
     $("#output ul").text('');
     var userNameInput = $("input#name").val();
     var userNumberInput = parseInt($("input#num").val());
     var output = generateOutputRange(userNameInput, userNumberInput);
     output.forEach(outputValue => buildList(outputValue));
-    $("#output").fadeToggle();
+    $("#output-panel").fadeToggle();
   });
 });
 
