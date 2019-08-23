@@ -12,6 +12,7 @@ $(document).ready(function(){
     var output = generateOutputRange(userNameInput, userNumberInput);
     output.forEach(outputValue => buildList(outputValue));
     $("#output-panel").fadeToggle();
+    $("#analysis").hide();
   });
 
   $("#analysis-btn").click(function(){
@@ -21,7 +22,7 @@ $(document).ready(function(){
     });
     var dataObject = performAnalysis(listItems);
     buildAnalysisTable(dataObject);
-    $(".table").show();
+    $("#analysis").show();
   });
 });
 

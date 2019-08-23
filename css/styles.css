@@ -1,16 +1,28 @@
 body {
   font-family: monospace;
+  background-color: #526355;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 18px;
+}
+#output-panel {
+  margin-top: 20px;
 }
 
 #output {
+  background-color: white;
   border: 1px solid grey;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 8px;
   padding: 3em;
 }
+
 ul {
   margin: 0;
 }
+
 li {
   text-indent: 12px;
   border-radius: 5px;
@@ -70,9 +82,13 @@ li:hover>img.car {
 }
 
 #analysis-btn {
-  margin-top: 10px;
+  margin: 20px;
 }
 
-.table {
+#analysis {
   display: none;
+}
+
+tbody {
+  background-color: white;
 }
