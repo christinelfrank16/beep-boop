@@ -35,11 +35,21 @@ function createRangeValues(num){
 
 function formatName(name){
   name = name.toLowerCase();
+  
+  var regex = /[a-z]/;
   if(name.includes(" ")){
     name = name.substring(0, name.indexOf(" "));
   }
-  name = name.charAt(0).toUpperCase() + name.substring(1, name.length);
-  return name;
+
+  var updatedName = "";
+  for(var char = 0; char < name.length; char++){
+    if(regex.test(name[char])){
+      updatedName += name[char];
+    }
+  }
+
+  updatedName = updatedName.charAt(0).toUpperCase() + updatedName.substring(1, updatedName.length);
+  return updatedName;
 }
 
 function checkExceptions(name, rangeArray){
