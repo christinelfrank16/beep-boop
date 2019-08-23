@@ -2,11 +2,15 @@ $(document).ready(function(){
   $("form#user-input").submit(function(event){
     event.preventDefault();
     var userInput = parseInt($("input#num").val());
-    var output = createExceptions(userInput);
+    var output = createMsgExceptions(userInput);
     $("#output").text(output);
   });
 });
 
-function createExceptions(num){
+function createMsgExceptions(num){
+  if(!num){
+    alert("Input not accepted. Please enter a number.");
+  }
+
   return num;
 }
