@@ -4,8 +4,9 @@ $(document).ready(function(){
   $("form#user-input").submit(function(event){
     event.preventDefault();
     $("#output ul").text('');
-    var userInput = parseInt($("input#num").val());
-    var output = generateOutputRange(userInput);
+    var userNameInput = $("input#name").val();
+    var userNumberInput = parseInt($("input#num").val());
+    var output = generateOutputRange(userNameInput, userNumberInput);
     output.forEach(function(outputValue){
       $("#output ul").append(`<li> ${outputValue} </li>`);
     });
@@ -16,14 +17,11 @@ $(document).ready(function(){
 
 ///////////  Business Logic  ///////////
 
-function generateOutputRange(input){
-  if(!input){
-    alert("Please enter a number.");
-  } else {
-    var range = createRangeValues(input);
-    var finalRangeValues = checkExceptions(range);
-    return finalRangeValues;
-  }
+function generateOutputRange(name, number){
+  var range = createRangeValues(number);
+  name = formatName(name);
+  var finalRangeValues = checkExceptions(name, range);
+  return finalRangeValues;
 }
 
 
@@ -35,19 +33,32 @@ function createRangeValues(num){
   return range;
 }
 
+function formatName(name){
+  name = name.toLowerCase();
+  if(name.includes(" ")){
+    name = name.substring(0, name.indexOf(" "));
+  }
+  name = name.charAt(0).toUpperCase() + name.substring(1, name.length);
+  return name;
+}
 
-function checkExceptions(rangeArray){
+function checkExceptions(name, rangeArray){
   var exceptionMsgs = [
     "\"Beep!\"",
     "\"Boop!\"",
     "\"I'm sorry Dave. I'm afraid I can't do that.\""
   ];
 
+
   var updatedRangeArray = rangeArray.map(function(rangeNum){
     for(var msgIndex = exceptionMsgs.length-1; msgIndex >= 0; msgIndex-=1){
       var rangeString = rangeNum.toString();
+      var exceptionMsg = exceptionMsgs[msgIndex];
+      if(exceptionMsg.includes("Dave") && rangeNum % 3 === 0){
+        exceptionMsg = exceptionMsg.replace("Dave", name);
+      }
       if(rangeString.includes((msgIndex+1).toString())){
-        return exceptionMsgs[msgIndex];
+        return exceptionMsg;
       }
     }
     return rangeNum;
