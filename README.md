@@ -14,10 +14,14 @@ This application takes user numeric input and returns a range of numbers startin
 
 ## Setup/Installation Requirements
 
+#### View hosted site
+* Go to: http://christinelfrank16.github.io/beep-boop
+
+#### View a local version of this site
 * Clone this repository
 * At the local repository, copy the full path of the index.html file
 * Open a new web browser
-* Pasted the copied path into the browser
+* Paste the copied path into the browser
 
 ## Known Bugs
 
