@@ -2,6 +2,7 @@
 
 $(document).ready(function(){
   $("#output-panel").hide();
+
   $("form#user-input").submit(function(event){
     event.preventDefault();
     $("#output-panel").hide();
@@ -12,25 +13,119 @@ $(document).ready(function(){
     output.forEach(outputValue => buildList(outputValue));
     $("#output-panel").fadeToggle();
   });
+
+  $("#analysis-btn").click(function(){
+    var listItems = [];
+    $("#output ul li").each(function(){
+      listItems.push($(this));
+    });
+    var dataObject = performAnalysis(listItems);
+    buildAnalysisTable(dataObject);
+    $(".table").show();
+  });
 });
+
+function buildAnalysisTable(dataHolder){
+  var dataProps = Object.keys(dataHolder);
+  console.log(dataProps);
+  dataProps.forEach((propName, index) => buildRow(dataHolder, propName, index));
+}
+
+function buildRow(dataHolder, propName, index){
+  if(propName !== "totalCount"){
+    var markup = `
+      <tr>
+        <th scope="row">$INDEX$</th>
+        <td>$NAME$</td>
+        <td>$COUNT$</td>
+        <td>$FREQ$</td>
+      </tr>
+        `;
+    markup = markup.replace("$INDEX$", index);
+    markup = markup.replace("$NAME$", dataHolder[propName].name);
+    markup = markup.replace("$COUNT$", dataHolder[propName].count);
+    markup = markup.replace("$FREQ$", dataHolder[propName].frequency);
+    $("tbody").append(markup);
+  }
+}
 
 function buildList(outputValue){
   if(outputValue.toString().includes("Beep")){
-    return $("#output ul").append(`<li class="beep"> ${outputValue} <img class="car" src="img/beep.png"></li>`);
+    return $("#output ul").append(`<li class="beep">${outputValue}<img class="car" src="img/beep.png"></li>`);
   } else if(outputValue.toString().includes("Boop")){
-    return $("#output ul").append(`<li class="boop"> ${outputValue} <img class="pup" src="img/boop.jpg"></li>`);
+    return $("#output ul").append(`<li class="boop">${outputValue}<img class="pup" src="img/boop.jpg"></li>`);
   } else if(outputValue.toString().includes("Dave")){
-    return $("#output ul").append(`<li class="dave"> ${outputValue} </li>`);
+    return $("#output ul").append(`<li class="dave">${outputValue}</li>`);
   } else if(outputValue % 2 === 0){
-    return $("#output ul").append(`<li class="even"> ${outputValue} </li>`);
+    return $("#output ul").append(`<li class="even">${outputValue}</li>`);
   } else if((Math.floor(Math.random()*6)+1) % (Math.floor(Math.random()*6)+1) === 0){
-    return $("#output ul").append(`<li class="other"> ${outputValue} </li>`);
+    return $("#output ul").append(`<li class="other">${outputValue}</li>`);
   } else {
-    return $("#output ul").append(`<li> ${outputValue} </li>`);
+    return $("#output ul").append(`<li>${outputValue}</li>`);
   }
 }
 
 ///////////  Business Logic  ///////////
+
+function performAnalysis(listItems){
+  data = {};
+  var data = addDataTypes(listItems, data);
+  data = countData(listItems, data);
+  data = calcFrequency(data);
+  console.log(data);
+  return data;
+}
+
+function addDataTypes(listItems, dataHolder){
+  dataHolder.number = {
+    name: 'Numbers',
+    count: 0
+  }
+  dataHolder.font = {
+    name: 'Special Font Effects',
+    count: 0
+  }
+
+  listItems.forEach(function(listItem){
+    if(!Object.keys(dataHolder).includes(listItem.text()) && listItem.text().includes("\"")) {
+      dataHolder[listItem.text().toLowerCase()] = { name: listItem.text(), count: 0 }
+    }
+  });
+  return dataHolder;
+}
+
+function countData(listItems, dataHolder){
+  dataHolder.totalCount = listItems.length;
+  listItems.forEach(function(listItem){
+    if(!listItem.text().includes("\"")){
+      dataHolder.number.count += 1;
+    }
+    if(listItem[0].className === "other"){
+      dataHolder.font.count += 1;
+    }
+    var dataProps = Object.keys(dataHolder);
+    if(dataProps.length > 2){
+      for(var index = 2; index < dataProps.length; index++){
+        var propName = dataProps[index];
+        if(listItem.text().toLowerCase() === propName){
+          dataHolder[propName].count += 1;
+        }
+      }
+    }
+  });
+  return dataHolder;
+}
+
+function calcFrequency(dataHolder){
+  var dataProps = Object.keys(dataHolder);
+  var totalCount = dataHolder.totalCount;
+
+  dataProps.forEach(function(propName){
+    var count = dataHolder[propName].count;
+    dataHolder[propName].frequency = (Math.round((count/totalCount)*100)).toString() + "%"
+  });
+  return dataHolder;
+}
 
 function generateOutputRange(name, number){
   var range = createRangeValues(number);
@@ -38,7 +133,6 @@ function generateOutputRange(name, number){
   var finalRangeValues = checkExceptions(name, range);
   return finalRangeValues;
 }
-
 
 function createRangeValues(num){
   var range = [];
@@ -73,7 +167,6 @@ function checkExceptions(name, rangeArray){
     "\"Boop!\"",
     "\"I'm sorry Dave. I'm afraid I can't do that.\""
   ];
-
 
   var updatedRangeArray = rangeArray.map(function(rangeNum){
     for(var msgIndex = exceptionMsgs.length-1; msgIndex >= 0; msgIndex-=1){
