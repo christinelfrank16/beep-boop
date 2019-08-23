@@ -3,6 +3,7 @@
 $(document).ready(function(){
   $("form#user-input").submit(function(event){
     event.preventDefault();
+    $("#output").hide();
     $("#output ul").text('');
     var userNameInput = $("input#name").val();
     var userNumberInput = parseInt($("input#num").val());
@@ -10,6 +11,7 @@ $(document).ready(function(){
     output.forEach(function(outputValue){
       $("#output ul").append(`<li> ${outputValue} </li>`);
     });
+    $("#output").fadeToggle();
   });
 });
 
@@ -35,7 +37,7 @@ function createRangeValues(num){
 
 function formatName(name){
   name = name.toLowerCase();
-  
+
   var regex = /[a-z]/;
   if(name.includes(" ")){
     name = name.substring(0, name.indexOf(" "));
