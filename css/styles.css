@@ -20,8 +20,16 @@ li:hover {
   font-size: 24px;
 }
 
-img:hover {
+li>img {
+  display: none;
+}
+li:hover>img.pup {
+  display: inline;
   width: 15em;
+}
+li:hover>img.car {
+  display: inline;
+  width: 10em;
 }
 
 .dave {
@@ -38,6 +46,23 @@ img:hover {
   background-color: #4a4a4a;
   color: white;
   font-weight: bolder;
+}
+
+.other:hover {
+  animation-name: colorChanger;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  color: black;
+  font-size: 30px;
+}
+
+@keyframes colorChanger {
+  0%   {color: purple;}
+  20%   {color: red;}
+  40%   {color: orange;}
+  60%  {color: yellow;}
+  80%  {color: blue;}
+  100% {color: green;}
 }
 
 .car, .pup {

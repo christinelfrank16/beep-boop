@@ -22,8 +22,10 @@ function buildList(outputValue){
     return $("#output ul").append(`<li class="dave"> ${outputValue} </li>`);
   } else if(outputValue % 2 === 0){
     return $("#output ul").append(`<li class="even"> ${outputValue} </li>`);
-  } else {
+  } else if((Math.floor(Math.random()*6)+1) % (Math.floor(Math.random()*6)+1) === 0){
     return $("#output ul").append(`<li class="other"> ${outputValue} </li>`);
+  } else {
+    return $("#output ul").append(`<li> ${outputValue} </li>`);
   }
 }
 
