@@ -8,14 +8,24 @@ $(document).ready(function(){
     var userNameInput = $("input#name").val();
     var userNumberInput = parseInt($("input#num").val());
     var output = generateOutputRange(userNameInput, userNumberInput);
-    output.forEach(function(outputValue){
-      $("#output ul").append(`<li> ${outputValue} </li>`);
-    });
+    output.forEach(outputValue => buildList(outputValue));
     $("#output").fadeToggle();
   });
 });
 
-
+function buildList(outputValue){
+  if(outputValue.toString().includes("Beep")){
+    return $("#output ul").append(`<li class="beep"> ${outputValue} <img class="car" src="img/beep.png"></li>`);
+  } else if(outputValue.toString().includes("Boop")){
+    return $("#output ul").append(`<li class="boop"> ${outputValue} <img class="pup" src="img/boop.jpg"></li>`);
+  } else if(outputValue.toString().includes("Dave")){
+    return $("#output ul").append(`<li class="dave"> ${outputValue} </li>`);
+  } else if(outputValue % 2 === 0){
+    return $("#output ul").append(`<li class="even"> ${outputValue} </li>`);
+  } else {
+    return $("#output ul").append(`<li class="other"> ${outputValue} </li>`);
+  }
+}
 
 ///////////  Business Logic  ///////////
 

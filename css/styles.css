@@ -3,5 +3,43 @@ body {
 }
 
 #output {
+  border: 1px solid grey;
+  border-radius: 5px;
   margin-top: 20px;
+  padding: 3em;
+}
+ul {
+  margin: 0;
+}
+li {
+  text-indent: 12px;
+  border-radius: 5px;
+}
+
+li:hover {
+  font-size: 24px;
+}
+
+img:hover {
+  width: 15em;
+}
+
+.dave {
+  color: blue;
+  font-weight: bold;
+}
+
+.beep {
+  color: red;
+  font-style: oblique;
+}
+
+.even {
+  background-color: #4a4a4a;
+  color: white;
+  font-weight: bolder;
+}
+
+.car, .pup {
+  width: 50px;
 }
