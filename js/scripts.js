@@ -16,15 +16,15 @@ function createMsgExceptions(num){
       range.push(count);
     }
 
-    var messages = ["\"Beep!\""];
+    var exceptionMsgs = ["\"Beep!\"", "\"Boop!\""];
     var outputValues = range.map(function(rangeNum){
-      var rangeString = rangeNum.toString();
-      if(rangeString.includes("1")){
-        return messages[0];
+      for(var msgIndex = exceptionMsgs.length; msgIndex > 0; msgIndex-=1){
+        var rangeString = rangeNum.toString();
+        if(rangeString.includes(msgIndex.toString())){
+          return exceptionMsgs[msgIndex-1];
+        }
       }
-      else {
-        return rangeNum;
-      }
+      return rangeNum;
     });
   }
   return outputValues;
